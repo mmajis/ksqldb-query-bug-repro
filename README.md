@@ -7,7 +7,11 @@ It looks like `StreamsConfig.APPLICATION_SERVER_CONFIG` has wrong format when ex
 **To Reproduce**
 
 0. Clone this repo: https://github.com/mmajis/ksqldb-query-bug-repro.git
-1. Put your confluent cloud api key and secret in the `.env` file inside the repo
+1. Put your confluent cloud api key and secret in a `.env` file inside the repo to configure Confluent Cloud connection:
+```
+CC_API_KEY=<your api key>
+CC_API_SECRET=<your api secret>
+```
 1. `docker-compose up -d`
 2. `docker-compose exec ksqldb-cli bash`
 3. `LOG_DIR=. ksqldb http://ksql-server:8088`
