@@ -6,16 +6,16 @@ It looks like `StreamsConfig.APPLICATION_SERVER_CONFIG` has wrong format when ex
 
 **To Reproduce**
 
-0. Clone this repo: https://github.com/mmajis/ksqldb-query-bug-repro.git
-1. Put your confluent cloud api key and secret in a `.env` file inside the repo to configure Confluent Cloud connection:
+1. Clone this repo: https://github.com/mmajis/ksqldb-query-bug-repro.git
+2. Put your confluent cloud api key and secret in a `.env` file inside the repo to configure Confluent Cloud connection:
 ```
 CC_API_KEY=<your api key>
 CC_API_SECRET=<your api secret>
 ```
-1. `docker-compose up -d`
-2. `docker-compose exec ksqldb-cli bash`
-3. `LOG_DIR=. ksqldb http://ksql-server:8088`
-4. Create a stream:
+3. `docker-compose up -d`
+4. `docker-compose exec ksqldb-cli bash`
+5. `LOG_DIR=. ksqldb http://ksql-server:8088`
+6. Create a stream:
 ```
   CREATE STREAM my_stream (my_value VARCHAR) WITH (
   VALUE_FORMAT = 'JSON',
@@ -23,7 +23,7 @@ CC_API_SECRET=<your api secret>
   PARTITIONS=1, 
   REPLICAS=3);
   ```
-5. `SELECT * FROM my_stream EMIT CHANGES;`
+7. `SELECT * FROM my_stream EMIT CHANGES;`
 
 **Expected behavior**
 
