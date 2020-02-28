@@ -1,0 +1,28 @@
+version: '3.7'
+services:
+  ksql-server:
+    image: "confluentinc/ksqldb-server:0.7.0"
+    ports:
+      - "8088:8088"
+    environment:
+      - KSQL_BOOTSTRAP_SERVERS=pkc-l9pve.eu-west-1.aws.confluent.cloud:9092
+      - KSQL_KSQL_STREAMS_BOOTSTRAP_SERVERS=pkc-l9pve.eu-west-1.aws.confluent.cloud:9092
+      - KSQL_LISTENERS=http://0.0.0.0:8088/
+      - KSQL_KSQL_SERVICE_ID=ksqldb-docker-local
+      - KSQL_KSQL_SINK_REPLICAS=3
+      - KSQL_KSQL_INTERNAL_TOPIC_REPLICAS=3
+      - KSQL_KSQL_INTERNAL_TOPIC_MIN_INSYNC_REPLICAS=2
+      - KSQL_SECURITY_PROTOCOL=SASL_SSL
+      - KSQL_SASL_MECHANISM=PLAIN
+      - KSQL_SASL_JAAS_CONFIG=org.apache.kafka.common.security.plain.PlainLoginModule required username=\"${CC_API_KEY}\" password=\"${CC_API_SECRET}\";
+      - KSQL_KSQL_LOGGING_PROCESSING_TOPIC_REPLICATION_FACTOR=3
+      - KSQL_REPLICATION_FACTOR=3
+      - KSQL_KSQL_STREAMS_TOPIC_MIN_INSYNC_REPLICAS=2
+  ksqldb-cli:
+    image: confluentinc/ksqldb-cli:0.7.0
+    # command: ksql http://ksql-server:8088
+    entrypoint: 
+      - /bin/bash
+      - -c
+      - |
+        sleep infinity
