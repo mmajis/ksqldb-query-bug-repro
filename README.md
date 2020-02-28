@@ -49,3 +49,5 @@ org.glassfish.jersey.server.model.internal.ResourceMethodInvocationHandlerFactor
 
 **Additional context**
 This used to work with v0.6.0.
+
+There's a separate branch `local_kafka` where the querying works. So the issue seems to be related to the configuration necessary to use Confluent Cloud.
