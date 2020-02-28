@@ -1,11 +1,12 @@
 **Describe the bug**
+
 Running a push query in ksqldb v0.7.0 errors out with `Error parsing host address http://<docker network host address>:8088/. Expected format host:port.`
 
 It looks like `StreamsConfig.APPLICATION_SERVER_CONFIG` has wrong format when executing the query.
 
 **To Reproduce**
-Steps to reproduce the behavior, include:
-0. Clone this repo: 
+
+0. Clone this repo: https://github.com/mmajis/ksqldb-query-bug-repro.git
 1. Put your confluent cloud api key and secret in the `.env` file inside the repo
 1. `docker-compose up -d`
 2. `docker-compose exec ksqldb-cli bash`
@@ -21,9 +22,11 @@ Steps to reproduce the behavior, include:
 5. `SELECT * FROM my_stream EMIT CHANGES;`
 
 **Expected behavior**
+
 Expected the query `SELECT * FROM my_stream EMIT CHANGES;` to start running.
 
 **Actual behaviour**
+
 The ksqlDB-cli outputs this error: `Error parsing host address http://<docker-compose_ksql-server_hostname>:8088/. Expected format host:port.`
 
 Stack trace in ksqldb-cli log: 
@@ -48,6 +51,7 @@ org.glassfish.jersey.server.model.internal.ResourceMethodInvocationHandlerFactor
 ```
 
 **Additional context**
+
 This used to work with v0.6.0.
 
 There's a separate branch `local_kafka` where the querying works. So the issue seems to be related to the configuration necessary to use Confluent Cloud.
