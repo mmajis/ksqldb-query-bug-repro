@@ -20,7 +20,7 @@ services:
       - KSQL_KSQL_STREAMS_TOPIC_MIN_INSYNC_REPLICAS=2
   ksqldb-cli:
     image: confluentinc/ksqldb-cli:0.7.0
-    # command: ksql http://ksql-server:8088
+    # run this to open ksqldb-cli: docker-compose exec ksqldb-cli bash -c "ksql http://ksql-server:8088"
     entrypoint: 
       - /bin/bash
       - -c
