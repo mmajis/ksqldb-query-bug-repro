@@ -11,6 +11,7 @@ It looks like `StreamsConfig.APPLICATION_SERVER_CONFIG` has wrong format when ex
 ```
 CC_API_KEY=<your api key>
 CC_API_SECRET=<your api secret>
+CC_ADDRESS=<your confluent cloud bootstrap server address and port>
 ```
 3. `docker-compose up -d`
 4. `docker-compose exec ksqldb-cli bash`
