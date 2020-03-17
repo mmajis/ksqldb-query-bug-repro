@@ -7,7 +7,7 @@ services:
     environment:
       - KSQL_BOOTSTRAP_SERVERS=${CC_ADDRESS}
       - KSQL_KSQL_STREAMS_BOOTSTRAP_SERVERS=${CC_ADDRESS}
-      - KSQL_LISTENERS=http://0.0.0.0:8088/
+      - KSQL_LISTENERS=http://0.0.0.0:8088/ #<-- the issue is the trailing slash here!
       - KSQL_KSQL_SERVICE_ID=ksqldb-docker-local
       - KSQL_KSQL_SINK_REPLICAS=3
       - KSQL_KSQL_INTERNAL_TOPIC_REPLICAS=3
